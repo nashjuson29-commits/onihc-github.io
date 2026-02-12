@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nurse Valentine Surprise</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #cce7ff, #ffe6f0);
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        max-width: 450px;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+        color: #e91e63;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .icon {
+        font-size: 50px;
+        animation: pulse 1.2s infinite;
+        margin-bottom: 10px;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        background-color: #e91e63;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #c2185b;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #finalMessage {
+        margin-top: 20px;
+        font-size: 20px;
+        color: #e91e63;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <!-- Step 1 -->
+    <div id="step1">
+        <div class="icon">🩺❤️</div>
+        <h1>Hi Jai, I have something to tell you...</h1>
+        <button onclick="showStep2()">Open</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="step2" class="hidden">
+        <h1>Hello be,</h1>
+        <p>In the past few days, things have gotten a little awkward between us, and we barely talk to each other.</p>
+        <p>but you still inspire me to keep doing better.</p>
+        <p>I made this for you, hoping you’ll give me another chance to get to know you better...</p>
+        <button onclick="showStep3()">Next</button>
+    </div>
+
+     <!-- Step 3 -->
+    <div id="step3" class="hidden">
+        <h1>Special Question</h1>
+        <p id="finalMessage">Will you be my Valentine? 🩺❤️</p>
+        <button class="response-btn" onclick="sayYes()">Yes</button>
+        <button class="response-btn" onclick="sayNo()">No</button>
+    </div>
+
+    <!-- Response -->
+    <div id="responseMessage" class="hidden"></div>
+</div>
+
+<script>
+function showStep2() {
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+}
+
+function showStep3() {
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+}
+
+function sayYes() {
+    document.getElementById("step3").classList.add("hidden");
+    let response = document.getElementById("responseMessage");
+    response.innerHTML = "<h1>Thank youuu!!, I'm looking forward to our meet and to get to know you more!💕</h1>";
+    response.classList.remove("hidden");
+}
+
+function sayNo() {
+    document.getElementById("step3").classList.add("hidden");
+    let response = document.getElementById("responseMessage");
+    response.innerHTML = "<h1>It's okay i understand😿</h1>";
+    response.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
